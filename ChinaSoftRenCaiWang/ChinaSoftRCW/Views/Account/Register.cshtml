@@ -1,0 +1,36 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewBag.Title = "User Registration";
+}
+
+<h1>用户注册</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WebName"></label><span class="text-danger">*</span><span class="text-danger" asp-validation-for="@Model.WebName"></span>
+                <input asp-for="WebName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Phone"></label><span class="text-danger">*</span><span class="text-danger" asp-validation-for="@Model.Phone"></span>
+                <input asp-for="@Model.Phone" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label><span class="text-danger">*</span><span class="text-danger" asp-validation-for="Email"></span>
+                <input asp-for="Email" class="form-control" placeholder="请输入您的中软邮箱" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label><span class="text-danger">*</span>
+                <input asp-for="Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"></label><span class="text-danger">*</span>
+                <input asp-for="ConfirmPassword" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">注册</button>
+        </form>
+    </div>
+</div>

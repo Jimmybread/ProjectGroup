@@ -1,0 +1,91 @@
+﻿@model SearchCandidate
+@{
+    ViewData["Title"] = "Candidate Index";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <form asp-controller="Candidate" asp-action="SearchCandidates">
+                <div class="row filterInput">
+                    <div class="col-sm-3"><label asp-for="@Model.ProjectId"></label><span>:</span></div>
+                    <div class="col-sm-9">
+                        <select asp-for="@Model.ProjectId" asp-items="@Model.Projects" class="form-control">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row filterInput">
+                    <div class="col-sm-3"><label asp-for="@Model.FullName"></label><span>:</span></div>
+                    <div class="col-sm-9"><input asp-for="@Model.FullName" /></div>
+                </div>
+                <div class="row filterInput">
+                    <div class="col-sm-3"><label asp-for="@Model.Phone"></label><span>:</span></div>
+                    <div class="col-sm-9"><input asp-for="@Model.Phone" /></div>
+                </div>
+                <div class="row filterInput">
+                    <div class="col-12 text-right">
+                        <button type="submit" class="btn btn-primary">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-9 border-dark">
+            <div class="card-deck">
+                @foreach (var Candidate in Model.CandidateDetailList)
+                {
+                    <input type="hidden" asp-for="@Candidate.Id" />
+                    <div class="card text-secondary" style="min-width:15rem; max-width:30%; margin-bottom: 20px;">
+                        <div class="card-header text-center text-info"><label id="title_@Candidate.Id">@Candidate.FullName</label></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label asp-for="@Candidate.TechStack"></label><span>:</span>
+                                </div>
+                                <div class="col-8"><label>@Candidate.TechStack</label></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label asp-for="@Candidate.Experience"></label><span>:</span>
+                                </div>
+                                <div class="col-8">
+                                    <label>@{ var year = Candidate.Experience ?? 0;}<span>@year</span> 年</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label asp-for="@Candidate.Position"></label><span>:</span>
+                                </div>
+                                <div class="col-8">
+                                    <label>@Candidate.Position</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label asp-for="@Candidate.Project"></label><span>:</span>
+                                </div>
+                                <div class="col-8">
+                                    <label>@Candidate.Project</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-sm-4 text-center">
+                                    <a class="btn btn-outline-primary btn-sm  text-primary" name="card_btn_@Candidate.Id" asp-controller="Candidate" asp-action="EditCandidate" asp-route-Id="@Candidate.Id">修改</a>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <a class="btn btn-outline-danger btn-sm text-danger" name="card_btn_@Candidate.Id" data-id="@Candidate.Id">删除</a>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <a class="btn btn-outline-info btn-sm text-info" name="card_btn_@Candidate.Id" asp-controller="Comment" asp-action="CandidateComment" asp-route-Id="@Candidate.Id">查看</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/css/main.css" rel="stylesheet" />
+<script src="~/js/main.js"></script>

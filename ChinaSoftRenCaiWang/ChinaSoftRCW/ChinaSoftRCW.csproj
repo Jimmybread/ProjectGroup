@@ -1,0 +1,79 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200501042422_addvalidationforCandidate.cs" />
+    <Compile Remove="Migrations\20200501042422_addvalidationforCandidate.Designer.cs" />
+    <Compile Remove="Migrations\20200501043523_addMaxlengthForCanddiateNvarchar.cs" />
+    <Compile Remove="Migrations\20200501043523_addMaxlengthForCanddiateNvarchar.Designer.cs" />
+    <Compile Remove="Migrations\20200501044259_requiredNameForCandidateFullNmae.cs" />
+    <Compile Remove="Migrations\20200501044259_requiredNameForCandidateFullNmae.Designer.cs" />
+    <Compile Remove="Migrations\20200501135601_SeedDataForProject.cs" />
+    <Compile Remove="Migrations\20200501135601_SeedDataForProject.Designer.cs" />
+    <Compile Remove="Migrations\20200501140206_SeedAndUpdateDataForProject.cs" />
+    <Compile Remove="Migrations\20200501140206_SeedAndUpdateDataForProject.Designer.cs" />
+    <Compile Remove="Migrations\20200501140508_UpdateDataForProject.cs" />
+    <Compile Remove="Migrations\20200501140508_UpdateDataForProject.Designer.cs" />
+    <Compile Remove="Migrations\20200502123543_addCommentAndRoleTable.cs" />
+    <Compile Remove="Migrations\20200502123543_addCommentAndRoleTable.Designer.cs" />
+    <Compile Remove="Migrations\20200503142411_testconstructor.cs" />
+    <Compile Remove="Migrations\20200503142411_testconstructor.Designer.cs" />
+    <Compile Remove="Migrations\20200503142917_test.cs" />
+    <Compile Remove="Migrations\20200503142917_test.Designer.cs" />
+    <Compile Remove="Migrations\20200503143051_test.cs" />
+    <Compile Remove="Migrations\20200503143051_test.Designer.cs" />
+    <Compile Remove="Migrations\20200504061446_testa.cs" />
+    <Compile Remove="Migrations\20200504061446_testa.Designer.cs" />
+    <Compile Remove="Migrations\20200504121204_testforigenkey.cs" />
+    <Compile Remove="Migrations\20200504121204_testforigenkey.Designer.cs" />
+    <Compile Remove="Migrations\20200504124324_testa.cs" />
+    <Compile Remove="Migrations\20200504124324_testa.Designer.cs" />
+    <Compile Remove="Migrations\20200504125320_asycDB.cs" />
+    <Compile Remove="Migrations\20200504125320_asycDB.Designer.cs" />
+    <Compile Remove="Migrations\20200504134610_test.cs" />
+    <Compile Remove="Migrations\20200504134610_test.Designer.cs" />
+    <Compile Remove="Migrations\20200504134848_asyncWithDB.cs" />
+    <Compile Remove="Migrations\20200504134848_asyncWithDB.Designer.cs" />
+    <Compile Remove="Migrations\20200504135504_attributte.cs" />
+    <Compile Remove="Migrations\20200504135504_attributte.Designer.cs" />
+    <Compile Remove="Migrations\20200504135552_attributte.cs" />
+    <Compile Remove="Migrations\20200504135552_attributte.Designer.cs" />
+    <Compile Remove="Migrations\20200505041012_orderTechstackColumn.cs" />
+    <Compile Remove="Migrations\20200505041012_orderTechstackColumn.Designer.cs" />
+    <Compile Remove="Migrations\20200505041110_orderTechstackColumn.cs" />
+    <Compile Remove="Migrations\20200505041110_orderTechstackColumn.Designer.cs" />
+    <Compile Remove="Migrations\20200705145138_add-gender-dropdownlist.cs" />
+    <Compile Remove="Migrations\20200705145138_add-gender-dropdownlist.Designer.cs" />
+    <Compile Remove="Migrations\20200705160024_add-jobstate-dropdown-list.cs" />
+    <Compile Remove="Migrations\20200705160024_add-jobstate-dropdown-list.Designer.cs" />
+    <Compile Remove="Migrations\20200705160539_add-jobstate-dropdown-list.cs" />
+    <Compile Remove="Migrations\20200705160539_add-jobstate-dropdown-list.Designer.cs" />
+    <Compile Remove="Migrations\20200705160912_add-jobstate-dropdown-list.cs" />
+    <Compile Remove="Migrations\20200705160912_add-jobstate-dropdown-list.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Interviewer\" />
+    <Folder Include="wwwroot\Resume\" />
+  </ItemGroup>
+
+</Project>

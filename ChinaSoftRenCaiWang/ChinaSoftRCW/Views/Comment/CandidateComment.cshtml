@@ -1,0 +1,165 @@
+﻿@model CandidateComment
+@{
+    ViewData["Title"] = "Candidate";
+    // Can not change InterviewComments to Comments,
+    // because Comments.HRComment can't reflect to InterviewComments.HRComments correctly
+    var InterviewComments = Model.InterviewComments;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold">@Model.FullName</div>
+                <div class="card-body text-secondary">
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@Model.TechStack"></label><span><span>:</span></span>
+                        </div>
+                        <label class="col-8">@Model.TechStack</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@Model.Experience"></label><span>:</span>
+                        </div>
+                        <label class="col-8">@{var year = Model.Experience ?? 0; }<span>@year</span> 年</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@Model.Position"></label><span>:</span>
+                        </div>
+                        <label class="col-8">@Model.Position</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@Model.Project"></label><span>:</span>
+                        </div>
+                        <label class="col-8">@Model.Project</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@Model.Phone"></label><span>:</span>
+                        </div>
+                        <label class="col-8">@Model.Phone</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@Model.JobState"></label><span>:</span>
+                        </div>
+                        <label class="col-8">@Model.JobState</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@Model.Email"></label><span>:</span>
+                        </div>
+                        <label class="col-8">@Model.Email</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@Model.Gender"></label><span>:</span>
+                        </div>
+                        <label class="col-8">@Model.Gender</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@Model.Age"></label><span>:</span>
+                        </div>
+                        <label class="col-8">@Model.Age</label>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label asp-for="@Model.ResidentAddress"></label><span>:</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>@Model.ResidentAddress</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label asp-for="@Model.ResumePath"></label><span>:</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <a asp-controller="Candidate" asp-action="DownloadFile"
+                               asp-route-filename="@Model.ResumePath?.Split('\\')?.Last()">
+                                @Model.ResumePath?.Split('\\')?.Last()
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-sm-4 text-center text-primary">
+                            <a class="btn btn-outline-primary btn-sm text-primary" asp-controller="Candidate" asp-action="EditCandidate" asp-route-Id="@Model.Id">修改</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <form asp-controller="Comment" asp-action="SaveComment" method="post">
+                <input type="hidden" asp-for="@Model.Id" />
+                <div class="form-group">
+                    <div class="form-row">
+                        <h6 class="text-info" for="HRComment"><label asp-for="@InterviewComments.HRComment"></label></h6>
+                        <textarea class="form-control" asp-for="@InterviewComments.HRComment" rows="3">@InterviewComments.HRComment</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h6 class="text-info"><label asp-for="@InterviewComments.InterviewerComments"></label></h6>
+                    <div class="row">
+                        <div class="col-4">
+                            <label asp-for="@InterviewComments.InterviewerComments.Tech"></label>
+                        </div>
+                        <div class="col-4">
+                            <label asp-for="@InterviewComments.InterviewerComments.Language"></label>
+                        </div>
+                        <div class="col-4">
+                            <label asp-for="@InterviewComments.InterviewerComments.SoftSkill"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <textarea class="form-control" asp-for="@InterviewComments.InterviewerComments.Tech" rows="3">@InterviewComments.InterviewerComments.Tech</textarea>
+                        </div>
+                        <div class="col-4">
+                            <textarea class="form-control" asp-for="@InterviewComments.InterviewerComments.Language" rows="3">@InterviewComments.InterviewerComments.Language</textarea>
+                        </div>
+                        <div class="col-4">
+                            <textarea class="form-control" asp-for="@InterviewComments.InterviewerComments.SoftSkill" rows="3">@InterviewComments.InterviewerComments.SoftSkill</textarea>
+                        </div>
+                    </div>
+                    <label asp-for="@InterviewComments.InterviewerComments.Remark"></label>
+                    <textarea class="form-control" asp-for="@InterviewComments.InterviewerComments.Remark" rows="3">@InterviewComments.InterviewerComments.Remark</textarea>
+                </div>
+                <div class="form-group">
+                    <h6 class="text-info" for="PMComment"><label asp-for="@InterviewComments.PMComment"></label></h6>
+                    <textarea class="form-control" asp-for="@InterviewComments.PMComment" rows="3">@InterviewComments.PMComment</textarea>
+                </div>
+                <div class="form-group">
+                    <h6 class="text-info" for="ClientComment"><label asp-for="@InterviewComments.ClientComment"></label></h6>
+                    <textarea class="form-control" asp-for="@InterviewComments.ClientComment" rows="3">@InterviewComments.ClientComment</textarea>
+                </div>
+                <div class="form-group">
+                    <button id="btn_submit" type="submit" class="btn btn-secondary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('textarea').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $("#btn_submit").removeClass('btn-secondary').addClass('btn-primary');
+            });
+        });
+    </script>
+}
+<link href="~/css/main.css" rel="stylesheet" />
+<script src="~/js/main.js"></script>

@@ -1,0 +1,72 @@
+﻿@model CandidateDetail
+@{
+    ViewData["Title"] = "Index";
+    var Candidate = Model;
+}
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-header text-center font-weight-bold">@Candidate.FullName</div>
+        <div class="card-body text-info">
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.TechStack"></label>
+                <label class="col-10">@Candidate.TechStack</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.Experience"></label>
+                <label class="col-10">@{var year = Candidate.Experience ?? 0; }<span>@year</span> 年</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.Position"></label>
+                <label class="col-10">@Candidate.Position</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.Project"></label>
+                <label class="col-10">@Candidate.Project</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.Phone"></label>
+                <label class="col-10">@Candidate.Phone</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.JobState"></label>
+                <label class="col-10">@Candidate.JobState</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.Email"></label>
+                <label class="col-10">@Candidate.Email</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.Gender"></label>
+                <label class="col-10">@Candidate.Gender</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.Age"></label>
+                <label class="col-10">@Candidate.Age</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.ResidentAddress"></label>
+                <label class="col-10">@Candidate.ResidentAddress</label>
+            </div>
+            <div class="row">
+                <label class="col-2" asp-for="@Candidate.ResumePath"></label>
+                <a class="col-10" asp-controller="Candidate" asp-action="DownloadFile" asp-route-filename="@Model.ResumePath?.Split('\\')?.Last()">
+                    @Model.ResumePath?.Split('\\')?.Last()
+                </a>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <a class="btn btn-outline-primary btn-sm text-primary" name="card_btn_@Candidate.Id" asp-controller="Candidate" asp-action="EditCandidate" asp-route-Id="@Candidate.Id">修改</a>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <a class="btn btn-outline-info btn-sm text-info" name="card_btn_@Model.Id" asp-controller="Comment" asp-action="CandidateComment" asp-route-Id="@Model.Id">查看</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/css/main.css" rel="stylesheet" />
+<script src="~/js/main.js"></script>

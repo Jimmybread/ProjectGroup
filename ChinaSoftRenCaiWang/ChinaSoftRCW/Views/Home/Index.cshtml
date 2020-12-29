@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<style type="text/css">
+    .imgStyle {
+        width: 100px;
+        height: 100px;
+        border: 3px solid grey;
+    }
+</style>
+<script src="jquery-1.11.2.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#divId img').on({
+            mouseover: function () {
+                $(this).css({
+                    'cursor': 'hand',
+                    'border-Color': 'red'
+                });
+            },
+            mouseout: function () {
+                $(this).css({
+                    'cursor': 'default',
+                    'border-Color': 'grey'
+                });
+            },
+            click: function () {
+                var imageURL = $(this).attr('src');
+                $('#mainImage').fadeOut(1000, function () {
+                    $(this).attr('src', imageURL);
+                }).fadeIn(1000);
+            }
+        });
+    });
+</script>
+
+<div>
+    <img id="mainImage" style="border:3px solid grey"
+         src="/Images/Hydrangeas.jpg" height="500" width="540" />
+    <br />
+    <div id="divId">
+        <img src="~/images/chinasoft.jpg" />
+        <img src="~/images/shanghai.jpg" />
+        <img src="~/images/china.png" />
+        <img src="~/images/yujinxiang.jpg" />
+        <img src="~/images/panda.jpg" />
+    </div>
+</div>*@
